@@ -1,9 +1,37 @@
-function validate(){
-    let username = document.getElementById('username').value;
-    let password = document.getElementById('password').value;
+let username = document.getElementById('username');
+let password = document.getElementById('password');
+let form = document.querySelector('#form');
 
 
-if(username === 'admin' && password === 'admin'){
-    alert ('Login successfuly !');
+form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    if(username.value == ''){
+        errorMessage(username);
+    }
+    else{
+        succesMessage(username);
+    }
+
+    if(password.value == ''){
+        errorMessage(password);
+    } else{
+        succesMessage(password);
+    }
+
+
+    if(username.value !== '' && password.value !== ''){
+        window.location = "../index.html";
+    }
+});
+
+function errorMessage(input){
+    input.classList.remove("succes");
+    input.classList.add("error");
 }
+function succesMessage(input){
+    input.classList.remove("error");
+    input.classList.add("succes");
 }
+
+
